@@ -1,0 +1,50 @@
+import os
+
+def merge_sort(arr):
+    print("Splitting ", arr)
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+            print("Merging ", arr)
+            os.system('afplay /System/Library/Sounds/Funk.aiff')  # Play sound
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+            print("Merging ", arr)
+            os.system('afplay /System/Library/Sounds/Funk.aiff')  # Play sound
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+            print("Merging ", arr)
+            os.system('afplay /System/Library/Sounds/Funk.aiff')  # Play sound
+
+def get_input():
+    input_str = input("Enter a list of numbers separated by spaces: ")
+    user_list = [int(item) for item in input_str.split()]  # Convert each number to an integer
+    return user_list
+
+
+user_array = get_input()
+print("Given array is:", user_array)
+
+merge_sort(user_array)
+print("Sorted array is:", user_array)
